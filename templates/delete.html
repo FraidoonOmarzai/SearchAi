@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+   <meta charset="utf-8">
+   <title>Admin</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+
+<body>
+   <div class="box box2" id="heading">
+      <h1 class="ph1">Remove User👨‍💻️</h1>
+   </div>
+   
+   <div class="box box2">
+      {% for user in users %}
+      <form action="/delete" method="post">
+
+         <div class="item">
+            <!-- using input to submit -->
+            <input type="checkbox" name="checkbox" value="{{ user.email }}" onChange="this.form.submit()">
+            <p class="pp">{{ user.email }}</p>
+         </div>
+         <!-- here we use second input with type of hidden for receving the  email -->
+         <input type="hidden" name="email_id" value="{{ user.email }}">
+      </form>
+      {% endfor %}
+   </div>
+
+   <a class="btn btn-light pb" href="/admin" role="button">Back</a>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+      }
+
+      html,
+      body,
+      header,
+      #intro {
+         height: 100%;
+      }
+
+      img {
+         display: block;
+         max-width: 90%;
+         height: auto;
+      }
+
+      .btn.pb {
+         margin-top: 6rem;
+         background-color: dark;
+      }
+   </style>
+   <title>Breast Cancer Prediction</title>
+</head>
+
+<body>
+   <header>
+
+      <div id="intro" class="container-fluid view ">
+         <h1 class="text-center text-capitalize pt-5">Know your chances of getting Breast Cancer in one Click!</h1>
+         <hr class="w-75 mx-auto pt-5">
+         <div class="row mb-5">
+            <div class="col-lg-6 col-md-6 col-12 my-auto">
+               <img src="../static/images/breast.jpg" class="float-left">
+               <h3>{{ prediction_text }}
+                  <h3>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+               <form action="{{ url_for('predictCancer')}}" method="POST">
+                  <div class="form-group">
+
+                     <br><br><br>
+                     <label for="concave points_mean">Mean of the Concave Points</label>
+                     <input class="form-control" type="number" id="concave points_mean" name="concave points_mean" required="required" placeholder="Mean of the Concave Points">
+                  </div>
+                  <div class="form-group">
+                     <label for="area_mean">Mean of the Area</label>
+                     <input class="form-control" type="number" step="any" id="area_mean" name="area_mean" required="required" placeholder="Mean of the Area">
+                  </div>
+                  <div class="form-group">
+                     <label for="radius_mean">Mean of the Radius</label>
+                     <input class="form-control" type="number" id="radius_mean" name="radius_mean" required="required" placeholder="Mean of the radius">
+                  </div>
+                  <div class="form-group">
+                     <label for="perimeter_mean">Mean of the Perimeters</label>
+                     <input class="form-control" type="number" id="perimeter_mean" name="perimeter_mean" required="required" placeholder="Mean of the Parameter">
+                  </div>
+                  <div class="form-group">
+                     <label for="concavity_mean">Mean of the Concavity</label>
+                     <input class="form-control" type="number" id="concavity_mean" name="concavity_mean" required="required" placeholder="Mean of the concavity">
+                  </div>
+                  <button type="submit" class="btn btn-danger">Predict</button>
+               </form>
+               <a class="btn btn-dark pb" href="/main" role="button">Back</a>
+            </div>
+
+         </div>
+
+      </div>
+
+   </header>
+
+
+</body>
+
+</html>
