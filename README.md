@@ -1,11 +1,11 @@
 <h1 align="center"> SearchAi </h1>
 
 ### Applications:
- - [Heart Disease](#Heart Disease-)
- - [Kidney Disease](#Kidney Disease-)
+ - [Heart_Disease](#Heart_Disease-)
+ - [Kidney_Disease](#Kidney_Disease-)
  - [Diabetes](#Diabetes-)
- - [Liver Disease](#Liver Disease-)
- - [Breast Cancer](#Breast Cancer-)
+ - [Liver_Disease](#Liver_Disease-)
+ - [Breast_Cancer](#Breast_Cancer-)
  - [MathAi](#MathAi-)
 
 
