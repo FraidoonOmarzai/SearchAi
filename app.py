@@ -286,4 +286,5 @@ def predictLiverD():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.config['Debug'] = True
+    app.run()

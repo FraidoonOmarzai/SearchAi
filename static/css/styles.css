@@ -1,7 +1,7 @@
 body {
    font-family: 'Just Another Hand', cursive;
    /* background-color: #242E6B; */
-   background-image: url(../images/pic.jpg);
+   /* background-image: url(../images/pic.jpg); */
    width: 100%;
    background-position: top;
    background-repeat: no-repeat;
@@ -80,12 +80,6 @@ h1.ph1 {
    color: white;
 }
 
-.homebg {
-   /* background-color: #242E6B; */
-   background-image: url(../images/pic.jpg);
-   background-size:cover;
-}
-
 .btn.pb {
    margin-left: 48%;
 }
@@ -161,3 +155,33 @@ input[type="checkbox"] {
    margin-left: 40rem;
    margin-top: 10rem;
 }
+
+.ho{
+   background: url(../images/robot.jpg);
+}
+
+.sec{
+   background: url(../images/sec.jpg);
+}
+
+.admin{
+   background: url(../images/admin.jpg);
+}
+
+.imgg {
+   background-repeat: no-repeat;
+   background-size: auto;
+   background-size:100% 100%;
+   -webkit-filter: blur(5px);
+   -moz-filter: blur(5px);
+   -o-filter: blur(5px);
+   -ms-filter: blur(5px);
+   filter: blur(15px);
+   position: fixed;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   z-index: -1;
+ }
+
