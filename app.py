@@ -4,6 +4,7 @@ from flask import Flask, url_for, render_template, redirect, request
 import flask
 from flask_pymongo import PyMongo
 import joblib
+import pickle
 import numpy as np
 
 app = Flask(__name__, template_folder='templates')
@@ -282,6 +283,33 @@ def predictLiverD():
         prediction = "Sorry you chances of getting the disease. Please consult the doctor immediately"
     else:
         prediction = "No need to fear. You have no dangerous symptoms of the disease"
+    return(render_template("result.html", prediction_text=prediction))
+
+# SMS Detector
+
+
+@app.route('/sms')
+def smsDetector():
+    return render_template('sms.html')
+
+
+@app.route('/Spamprediction', methods=['POST'])
+def Spamprediction():
+    model = pickle.load(
+        open('Trained Model/sms-detector/spam-model.pkl', 'rb'))
+    tfv = pickle.load(
+        open('Trained Model/sms-detector/CountVectorizer-transform.pkl', 'rb'))
+
+    if request.method == 'POST':
+        message = request.form["msg"]
+        data = [message]
+        msg = tfv.transform(data).toarray()
+        result = model.predict(msg)
+
+    if(int(result) == 1):
+        prediction = "This is a SPAM message!"
+    else:
+        prediction = "This is NOT a spam message."
     return(render_template("result.html", prediction_text=prediction))
 
 
