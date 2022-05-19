@@ -15,11 +15,10 @@ body {
    margin-bottom: 30px;
 }
 
-#question {
-   font-weight: 300px;
-   font-size: 150px;
-   display: inline;
-   color: #FFFFFF;
+h1.num {
+   color: #fff;
+   font-size: 5rem;
+   padding: 4rem;
 }
 
 /* TODO: Styling by id: add styling for canvas */
@@ -27,13 +26,6 @@ body {
    display: inline;
    border: 5px solid #FFFFFF;
    /* background-color: black; */
-}
-
-.scores{
-   color: #D3E4CD;
-   line-height: 1;
-   /* width: 60%; */
-   /* margin: 30px auto; */
 }
 
 .math-title{
@@ -79,6 +71,7 @@ h1.ph1 {
 }
 
 .btn.pb {
+   font-size: 2rem;
    margin-left: 48%;
    margin-top: 3rem;
 }
@@ -187,4 +180,3 @@ input[type="checkbox"] {
    left: 0;
    z-index: -1;
  }
-

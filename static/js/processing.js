@@ -112,3 +112,9 @@ function predictImage() {
 
     return output
 }
+
+function Check(){
+   const pred = predictImage()
+   document.getElementById('num').innerHTML = predictImage()
+
+}

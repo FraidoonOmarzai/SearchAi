@@ -22,10 +22,6 @@
 
    <script src="{{ url_for('static', filename='js/drawing.js') }}"></script>
    <script src="{{ url_for('static', filename='js/processing.js') }}"></script>
-   <script src="{{ url_for('static', filename='js/math.js') }}"></script>
-
-
-
 
 </head>
 
@@ -33,32 +29,26 @@
    <div class="imgg math"></div>
    <div class="container">
       <div class="math-title">
-         <h1 id="title">MathAi</h1>
+         <h1 id="title">Detect Drawn Number</h1>
 
-      <h2 id='question'><span id='n1'>3</span> + <span id='n2'>2</span> = </h2>
+         <canvas id="my_canvas" width="150" height="170"></canvas>
 
-      <canvas id="my_canvas" width="150" height="170"></canvas>
+         <h1 class="num">Predected Number: <span id='num'></span> </h1>
 
-      <h3 class="scores">score: <span id='score'>0</span> </h3>
-
-      <button id='checkAnswer' class='checkAnswer' value='Check'>Check Answer</button>
+         <button id='checkAnswer' class='checkAnswer' value='Check'>Detect Number</button>
       </div>
 
-      
+      <a class="btn btn-dark pb" href="/main" role="button">Back</a>
 
-   <a class="btn btn-dark pb" href="/main" role="button">Back</a>
-
-</div>
+   </div>
    <script>
       loadModel()
       prepareCanvas()
-      nextQ()
 
       document.getElementById('checkAnswer').addEventListener('click', function() {
          predictImage()
-         CheckAns()
+         Check()
          cleanCanvas()
-         nextQ()
       })
    </script>
 
