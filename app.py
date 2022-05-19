@@ -313,6 +313,30 @@ def Spamprediction():
     return(render_template("result.html", prediction_text=prediction))
 
 
+# Restaurant Review Sentiment Analysis
+@app.route('/RestaurantReview')
+def RestaurantR():
+    return render_template('reviewR.html')
+
+
+@app.route('/predictR', methods=['POST'])
+def predictR():
+    model = joblib.load('Trained Model/Restaurant Review/review-model.pkl')
+    tfv = joblib.load('Trained Model/Restaurant Review/tfv-transform.pkl')
+
+    if request.method == 'POST':
+        review = request.form['review']
+        data = [review]
+        vect = tfv.transform(data).toarray()
+        result = model.predict(vect)
+
+    if (int(result) == 1):
+        prediction = "This is a POSITIVE Review"
+    else:
+        prediction = "This is a NEGATIVE Review"
+    return render_template('result.html', prediction_text=prediction)
+
+
 if __name__ == '__main__':
     app.config['Debug'] = True
     app.run()
