@@ -1,3 +1,9 @@
+import os
+from werkzeug.utils import secure_filename
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.models import load_model
+from tensorflow.keras.applications.imagenet_utils import preprocess_input, decode_predictions
+from tensorflow.keras.applications.vgg19 import VGG19
 from crypt import methods
 from click import password_option
 from flask import Flask, url_for, render_template, redirect, request
@@ -335,6 +341,48 @@ def predictR():
     else:
         prediction = "This is a NEGATIVE Review"
     return render_template('result.html', prediction_text=prediction)
+
+# VGG 19
+
+
+# Load the saved Model
+model = VGG19(weights='imagenet')
+
+
+def model_predict(img_path, model):
+    img = image.load_img(img_path, target_size=(224, 224))
+
+    # Preprocessing the image
+    x = image.img_to_array(img)
+    x = np.expand_dims(x, axis=0)
+    x = preprocess_input(x)
+
+    preds = model.predict(x)
+    return preds
+
+
+@app.route('/vgg19', methods=['GET'])
+def vgg19():
+    return render_template('vgg19.html')
+
+
+@app.route('/predictImg', methods=['GET', 'POST'])
+def upload():
+    if request.method == 'POST':
+        # Get the file from post request
+        f = request.files['file']
+        basepath = os.path.dirname(__file__)
+        file_path = os.path.join(
+            basepath, 'uploads', secure_filename(f.filename))
+
+        preds = model_predict(file_path, model)
+
+        pred_class = decode_predictions(preds, top=1)
+        result = str(pred_class[0][0][1])
+
+        return result
+
+    return None
 
 
 if __name__ == '__main__':
